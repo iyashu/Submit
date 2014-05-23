@@ -9,10 +9,14 @@ import threading
 import test
 
 def wait(arg1 , stop_event):
-    while (not stop_event.is_set()):
-        sys.stdout.write('.')
-        sys.stdout.flush()
-        stop_event.wait(0.3)
+    try :
+        while (not stop_event.is_set()):
+            sys.stdout.write('.')
+            sys.stdout.flush()
+            stop_event.wait(0.3)
+    except Exception as error :
+        print "Error Ocurred while running thread !!"
+        
 
 def get_status(url,ID):
     try :
